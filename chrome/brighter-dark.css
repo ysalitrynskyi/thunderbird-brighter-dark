@@ -1,0 +1,78 @@
+/* =====================================================================
+ * Thunderbird Brighter Dark
+ * Makes the dark message list readable and makes unread mail obvious.
+ * Works in Cards view and Table view (tested on Thunderbird 157).
+ * https://github.com/ysalitrynskyi/thunderbird-brighter-dark
+ * ===================================================================== */
+
+/* ---- Palette: change these to taste ---------------------------------- */
+#threadTree, #threadPane, #threadTree tbody {
+  --tbd-pane-bg:    #262a32;   /* gaps between cards / pane background   */
+  --tbd-card-bg:    #333843;   /* card / row background                  */
+  --tbd-hover-bg:   #4a5262;   /* hover + unfocused selection base       */
+  --tbd-border:     #474e5b;   /* card borders                           */
+  --tbd-read:       #c6cbd4;   /* text of mail you've already read       */
+  --tbd-date:       #aeb4bf;   /* date text                              */
+  --tbd-unread:     #ffffff;   /* text of unread mail                    */
+  --tbd-unread-bg:  #3a4a66;   /* background of unread mail              */
+  --tbd-accent:     #5aa9ff;   /* bar on the left of unread mail         */
+  --tbd-new:        #9fd6ff;   /* subject of brand-new mail              */
+  --tbd-hover-edge: #7fbaff;   /* card border on hover                   */
+}
+
+/* ---- 1) Lift the base palette Thunderbird builds the list from -------- */
+#threadTree, #threadPane, #threadTree tbody {
+  --tree-pane-background: var(--tbd-pane-bg) !important;
+  --layout-background-0:  var(--tbd-card-bg) !important;
+  --layout-background-3:  var(--tbd-hover-bg) !important;
+  --layout-border-0:      var(--tbd-border) !important;
+  background-color: var(--tbd-pane-bg) !important;
+}
+
+/* ---- 2) Read mail: clearly readable light grey ------------------------ */
+#threadTree .card-layout .card-container,
+#threadTree tr[is="thread-row"] {
+  color: var(--tbd-read) !important;
+}
+#threadTree .card-layout .card-container .date {
+  color: var(--tbd-date) !important;
+}
+
+/* ---- 3) Unread mail: tinted card, accent bar, white bold text --------- */
+#threadTree .card-layout[data-properties~="unread"]:not(.selected) .card-container,
+#threadTree tr[is="thread-row"][data-properties~="unread"]:not(.selected) {
+  background-color: var(--tbd-unread-bg) !important;
+}
+#threadTree .card-layout[data-properties~="unread"] .card-container {
+  box-shadow: inset 5px 0 0 var(--tbd-accent) !important;
+  border-color: var(--tbd-accent) !important;
+}
+#threadTree tr[is="thread-row"][data-properties~="unread"] > td:first-child {
+  box-shadow: inset 5px 0 0 var(--tbd-accent) !important;
+}
+#threadTree .card-layout[data-properties~="unread"] .card-container :is(.sender, .subject, .date),
+#threadTree tr[is="thread-row"][data-properties~="unread"] {
+  color: var(--tbd-unread) !important;
+  font-weight: 700 !important;
+}
+/* bigger unread dot */
+#threadTree .card-layout[data-properties~="unread"] {
+  --read-status-size: 20px !important;
+}
+
+/* ---- 4) Brand-new mail: light-blue subject ---------------------------- */
+#threadTree .card-layout[data-properties~="new"] .subject,
+#threadTree tr[is="thread-row"][data-properties~="new"] {
+  color: var(--tbd-new) !important;
+}
+
+/* ---- 5) Hover --------------------------------------------------------- */
+#threadTree .card-layout:not(.selected):hover .card-container {
+  border-color: var(--tbd-hover-edge) !important;
+}
+
+/* ---- 6) Folder pane: folders with unread mail ------------------------- */
+#folderTree li.unread > .container .name {
+  color: var(--tbd-unread, #fff) !important;
+  font-weight: 700 !important;
+}
