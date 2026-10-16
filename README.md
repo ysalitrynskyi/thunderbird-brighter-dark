@@ -1,6 +1,8 @@
 # Thunderbird Brighter Dark
 
-Thunderbird's dark theme makes the message list nearly black, and unread mail is marked by little more than a small green dot. This is a small stylesheet that keeps everything dark but makes the list **readable** and makes **unread mail impossible to miss**.
+Thunderbird's dark theme makes the message list nearly black, and unread mail is marked by little more than a small green dot. This is a small stylesheet that keeps the look dark but makes the list **readable** and makes **unread mail impossible to miss**.
+
+It was made for dark mode, but it **looks good with light themes too**: the message list gets its own calm slate look whichever theme you use.
 
 - Cards and rows lifted from near-black to a soft slate grey
 - Read mail in a clear light grey
@@ -8,7 +10,7 @@ Thunderbird's dark theme makes the message list nearly black, and unread mail is
 - **Brand-new mail** with a light-blue subject
 - Brighter hover outline, and bold folder names when a folder has unread mail
 
-Works in both **Cards view** and **Table view**. Tested on Thunderbird 157 on macOS; it should work on Linux and Windows too.
+Works with **dark and light themes**, in both **Cards view** and **Table view**. Tested on Thunderbird 157 on macOS; it should work on Linux and Windows too.
 
 ## Install
 
@@ -63,7 +65,7 @@ Or delete `brighter-dark.css` and the `@import` lines from `userChrome.css` / `u
 
 ## Notes
 
-- Use it with Thunderbird's built-in **Dark** theme (or the system theme with macOS/Windows in dark mode).
+- Works with Thunderbird's built-in **Dark**, **Light** and **System** themes. With a light theme, the message list keeps its slate look and stands out from the lighter interface around it.
 - Thunderbird's internal class names change from time to time. If a future update breaks something, please open an issue with your Thunderbird version.
 
 ## License
